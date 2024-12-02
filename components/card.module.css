@@ -34,6 +34,28 @@
   min-height: 100vh;
 }
 
+.formContainer{
+  display: flex;
+  justify-content: center; 
+  padding-top: 100px;
+  box-sizing: border-box;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.newPost{
+  border: none;
+  padding: 10px;
+  background-color: rgb(255, 255, 255);
+}
+
+.submitButton{
+  border: none;
+  padding: 10px 20px;
+  background-color: rgb(70, 102, 102);
+  color: white;
+}
+
 @media (max-width: 768px) {
   .cardbody {
     width: calc(50% - 20px);
@@ -45,3 +67,4 @@
     width: 100%;
   }
 }
+
