@@ -41,12 +41,16 @@
   box-sizing: border-box;
   flex-wrap: wrap;
   gap: 20px;
+  
 }
 
 .newPost{
   border: none;
   padding: 10px;
   background-color: rgb(255, 255, 255);
+  margin-right: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .submitButton{
@@ -54,6 +58,8 @@
   padding: 10px 20px;
   background-color: rgb(70, 102, 102);
   color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 @media (max-width: 768px) {

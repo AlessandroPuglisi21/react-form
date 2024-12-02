@@ -4,6 +4,7 @@ import initialPosts from "../components/posts";
 
 export default function Card() {
   const [title, setTitle] = useState('');
+  const [tag, setTags] = useState('')
   const [posts, setPosts] = useState(initialPosts);
 
   const publishedPosts = posts.filter((post) => post.published);
@@ -14,15 +15,25 @@ export default function Card() {
     const newTitle = title.trim();
     if (newTitle === '') return;
 
+    const newTags = tag
+    .trim()
+    .toLocaleUpperCase()
+    .split('-')
+
+    if (newTags === '') return;
+
     const addedPost = {
       title: newTitle,
       image: 'https://picsum.photos/200/300?grayscale',
       content: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit animi unde quasi enim non esse ratione voluptas voluptate, officiis veritatis magni blanditiis possimus nobis cum id inventore corporis deserunt hic.Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit animi unde quasi enim non esse ratione voluptas voluptate, officiis veritatis magni blanditiis possimus nobis cum id inventore corporis deserunt hic.',
-      tags: [],
+      tags: newTags,
       published: true,
     };
+   
+    console.log(addedPost)
 
     setPosts([...posts, addedPost]);
+    setTags([])
     setTitle('');
     console.log('Post aggiunto!');
   }
@@ -33,6 +44,8 @@ export default function Card() {
         {/* FORM */}
         <div className={style.formContainer}>
           <form onSubmit={addPost} action="">
+
+            {/* TITOLO */}
             <input
               type="text"
               onChange={(e) => setTitle(e.target.value)}
@@ -40,6 +53,16 @@ export default function Card() {
               placeholder="Inserisci il titolo del post"
               className={style.newPost}
             />
+          
+              {/* TAG */}
+              <input
+              type="text"
+              onChange={(e) => setTags(e.target.value)}
+              value={tag}
+              placeholder="Inserisci Tags"
+              className={style.newPost}
+            />
+
             <input type="submit" value="Aggiungi" className={style.submitButton} />
           </form>
         </div>
@@ -54,7 +77,7 @@ export default function Card() {
                     {post.title} {post.id}
                   </h3>
                   <h5 style={{ color: post.tags.includes("html") ? "red" : "blue" }}>
-                    Tag: {post.tags.join("-")}
+                    Tag: {post.tags}
                   </h5>
                   <p>Contenuto: {post.content}</p>
                 </div>
